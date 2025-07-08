@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -110,6 +111,21 @@ public class Main {
                     int currenEven = 0;
                     int currenOdd = 0;
                     int currenOther = 0;
+                    int[] evenArray = new int[currenEven];
+                    int[] oddArray = new int[currenOdd];
+                    int[] otherArray = new int[currenOther];
+                    for (int i = 0; i < currentint; i++) {
+                        if (ints[i] % 2 == 0 && ints[i] % 3 == 0) {
+                            evenArray[currenEven++]=ints[i];
+                        } else if (ints[i] % 2 != 0 && ints[i] % 3 == 0) {
+                            oddArray[currenOdd++]=ints[i];
+                        } else {
+                            otherArray[currenOther++]=ints[i];
+                        }
+                    }
+                    currenEven = 0;
+                    currenOdd = 0;
+                    currenOther = 0;
                     for (int i = 0; i < currentint; i++) {
                         if (ints[i] % 2 == 0 && ints[i] % 3 == 0) {
                             currenEven++;
@@ -119,20 +135,9 @@ public class Main {
                             currenOther++;
                         }
                     }
-                    int[] evenArray = new int[currenEven];
-                    int[] oddArray = new int[currenOdd];
-                    int[] otherArray = new int[currenOther];
-                    for (int i = 0; i < currentint; i++) {
-                        if (ints[i] % 2 == 0 && ints[i] % 3 == 0) {
-                            evenArray[i] = ints[i];
-                        } else if (ints[i] % 2 != 0 && ints[i] % 3 == 0) {
-                            oddArray[i] = ints[i];
-                        } else {
-                            otherArray[i] = ints[i];
-                        }
-                    }
-                    for (int i = 0; i < evenArray.length; i++) {
-                        for (int j = 0; j < evenArray.length; j++) {
+
+                    for (int i = 0; i < currenEven; i++) {
+                        for (int j = 0; j < currenEven; j++) {
                             if (ints[i] > ints[j]) {
                                 int temp = ints[i];
                                 ints[i] = ints[j];
@@ -141,7 +146,7 @@ public class Main {
                         }
                     }
                     for (int i = 0; i < currenOdd; i++) {
-                        for (int j = 0; j < oddArray.length; j++) {
+                        for (int j = 0; j < currenOdd; j++) {
                             if (ints[i] > ints[j]) {
                                 int temp = ints[i];
                                 ints[i] = ints[j];
@@ -149,8 +154,8 @@ public class Main {
                             }
                         }
                     }
-                    for (int i = 0; i < otherArray.length-1; i++) {
-                        for (int j = 0; j < otherArray.length; j++) {
+                    for (int i = 0; i < currenOther; i++) {
+                        for (int j = 0; j < currenOther; j++) {
                             if (ints[i] > ints[j]) {
                                 int temp = ints[i];
                                 ints[i] = ints[j];
@@ -159,17 +164,17 @@ public class Main {
                         }
                     }
                     currentint = 0;
-                    for (int i = 0; i < evenArray.length; i++) {
-                        ints[i] = evenArray[i];
+                    for (int i = 0; i < currenEven; i++) {
+                        ints[currentint] = evenArray[i];
                         currentint++;
                     }
                     ;
-                    for (int i = 0; i < otherArray.length; i++) {
-                        ints[i] = otherArray[i];
+                    for (int i = 0; i < currenOther; i++) {
+                        ints[currentint] = otherArray[i];
                         currentint++;
                     }
-                    for (int i = 0; i < oddArray.length; i++) {
-                        ints[i] = oddArray[i];
+                    for (int i = 0; i < currenOdd; i++) {
+                        ints[currentint] = oddArray[i];
                         currentint++;
                     }
                     System.out.println();
